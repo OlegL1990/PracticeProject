@@ -1,66 +1,43 @@
-package ru.bellintegrator.eas.model;
+package ru.bellintegrator.eas.view;
 
+import ru.bellintegrator.eas.model.Countries;
+import ru.bellintegrator.eas.model.Docs;
+import ru.bellintegrator.eas.model.Office;
 
-
-import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "Users")
-public class User {
+public class EmployeeView {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "Id")
     private Long id;
 
-    @Basic(optional = false)
-    @Column(name = "firstName")
     private String firstName;
 
-    @Basic(optional = false)
-    @Column(name = "secondName")
     private String secondName;
 
-    @Basic(optional = false)
-    @Column(name = "middleName")
     private String middleName;
 
-    @Basic(optional = false)
-    @Column(name = "position")
     private String position;
 
-    @Basic(optional = false)
-    @Column(name = "phone")
     private String phone;
 
-    @Column(name = "isIdentified")
-    private Boolean isIdentified = true;
+    private Boolean isIdentified;
 
-    @Basic(optional = false)
-    @Column(name = "docNumber")
     private String docNumber;
 
-    @Basic(optional = false)
-    @Column(name = "docDate")
-    @Temporal(TemporalType.DATE)
     private Date docDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "officeid")
     private Office office;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "docid")
     private Docs docid;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "citizenshipid")
     private Countries citizenshipid;
-
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -111,6 +88,14 @@ public class User {
         isIdentified = identified;
     }
 
+    public String getDocNumber() {
+        return docNumber;
+    }
+
+    public void setDocNumber(String docNumber) {
+        this.docNumber = docNumber;
+    }
+
     public Date getDocDate() {
         return docDate;
     }
@@ -125,14 +110,6 @@ public class User {
 
     public void setOffice(Office office) {
         this.office = office;
-    }
-
-    public String getDocNumber() {
-        return docNumber;
-    }
-
-    public void setDocNumber(String docNumber) {
-        this.docNumber = docNumber;
     }
 
     public Docs getDocid() {
@@ -150,5 +127,4 @@ public class User {
     public void setCitizenshipid(Countries citizenshipid) {
         this.citizenshipid = citizenshipid;
     }
-
 }

@@ -33,12 +33,12 @@ public class Countries {
         this.code = code;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public Set<Employee> getEmployees() {
+        return employees;
     }
 
-    public void setUsers(Set<User> users0) {
-        this.users = users;
+    public void setEmployees(Set<Employee> users0) {
+        this.employees = employees;
     }
 
     @Basic(optional = false)
@@ -50,7 +50,7 @@ public class Countries {
     private int code;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "citizenshipid", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Set<User> users;
+    private Set<Employee> employees;
 
 
 }

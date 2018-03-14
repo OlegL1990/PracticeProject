@@ -21,7 +21,7 @@ public class Docs {
     private int code;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "docid", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Set<User> users;
+    private Set<Employee> employees;
 
 
     public Long getId() {
@@ -44,12 +44,12 @@ public class Docs {
         this.code = code;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public Set<Employee> getEmployees() {
+        return employees;
     }
 
-    public void setUsers0(Set<User> users) {
-        this.users = users;
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
     }
 
 

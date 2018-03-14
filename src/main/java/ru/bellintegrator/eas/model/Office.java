@@ -32,10 +32,14 @@ public class Office {
     private Org org;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "office", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Set<User> users;
+    private Set<Employee> employees;
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -70,12 +74,12 @@ public class Office {
         isActive = active;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public Set<Employee> getEmployees() {
+        return employees;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
     }
 
     public Org getOrg() {
@@ -86,5 +90,4 @@ public class Office {
         this.org = org;
     }
 
-    public Office(){}
 }
