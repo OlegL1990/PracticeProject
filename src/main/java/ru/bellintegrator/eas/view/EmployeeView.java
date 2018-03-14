@@ -1,7 +1,7 @@
 package ru.bellintegrator.eas.view;
 
-import ru.bellintegrator.eas.model.Countries;
-import ru.bellintegrator.eas.model.Docs;
+import ru.bellintegrator.eas.model.Country;
+import ru.bellintegrator.eas.model.Doc_type;
 import ru.bellintegrator.eas.model.Office;
 
 import java.util.Date;
@@ -28,9 +28,9 @@ public class EmployeeView {
 
     private Office office;
 
-    private Docs docid;
+    private Doc_type docid;
 
-    private Countries citizenshipid;
+    private Country citizenshipid;
 
     public Long getId() {
         return id;
@@ -112,19 +112,19 @@ public class EmployeeView {
         this.office = office;
     }
 
-    public Docs getDocid() {
+    public Doc_type getDocid() {
         return docid;
     }
 
-    public void setDocid(Docs docid) {
+    public void setDocid(Doc_type docid) {
         this.docid = docid;
     }
 
-    public Countries getCitizenshipid() {
+    public Country getCitizenshipid() {
         return citizenshipid;
     }
 
-    public void setCitizenshipid(Countries citizenshipid) {
+    public void setCitizenshipid(Country citizenshipid) {
         this.citizenshipid = citizenshipid;
     }
 }

@@ -11,13 +11,16 @@ public class Org {
     @Column(name = "Id")
     private Long id;
 
+    @Version
+    private Integer version;
+
     @Basic(optional = false)
     @Column(name = "name")
     private String name;
 
     @Basic(optional = false)
-    @Column(name = "fullname")
-    private String fullname;
+    @Column(name = "full_name")
+    private String fullName;
 
     @Basic(optional = false)
     @Column(name = "inn")
@@ -35,7 +38,7 @@ public class Org {
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "isActive")
+    @Column(name = "is_active")
     private Boolean isActive = true;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "org", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -51,8 +54,8 @@ public class Org {
         return name;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
     public String getInn() {
@@ -79,8 +82,8 @@ public class Org {
         this.name = name;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullName(String fullname) {
+        this.fullName = fullname;
     }
 
     public void setInn(String inn) {
@@ -103,7 +106,6 @@ public class Org {
         isActive = active;
     }
 
-    public Org(){}
 
 
 }

@@ -16,6 +16,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeDAO employeeDAO;
 
     @Override
+    @Transactional
     public void save(EmployeeView ev) {
         Employee employee = new Employee();
         employee.setFirstName(ev.getFirstName());
@@ -32,6 +33,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional
     public void update(EmployeeView ev) {
         Employee employee = new Employee();
         employee.setId(ev.getId());
@@ -50,6 +52,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public EmployeeView loadById(long id) {
         Employee employee = employeeDAO.loadById(id);
         EmployeeView employeeView = new EmployeeView();
@@ -69,6 +72,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional
     public void delete(long id) {
         Employee employee = employeeDAO.loadById(id);
         employeeDAO.delete(employee);

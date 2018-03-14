@@ -4,8 +4,8 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "Login")
-public class Login {
+@Table(name = "User")
+public class User {
     @Id
     @GeneratedValue
     @Column(name = "Id")
@@ -51,5 +51,4 @@ public class Login {
         this.passhash = passhash;
     }
 
-    public Login(){}
 }

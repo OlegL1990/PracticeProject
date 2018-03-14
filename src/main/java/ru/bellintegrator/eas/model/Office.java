@@ -12,6 +12,9 @@ public class Office {
     @Column(name = "Id")
     private Long id;
 
+    @Version
+    private Integer version;
+
     @Basic(optional = false)
     @Column(name = "name")
     private String name;
@@ -24,11 +27,11 @@ public class Office {
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "isActive")
+    @Column(name = "is_active")
     private Boolean isActive = true;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "orgiid")
+    @JoinColumn(name = "org_id")
     private Org org;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "office", cascade = {CascadeType.PERSIST, CascadeType.MERGE})

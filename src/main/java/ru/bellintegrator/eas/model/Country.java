@@ -5,35 +5,24 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "Docs")
-public class Docs {
+@Table(name = "Country")
+public class Country {
     @Id
     @GeneratedValue
     @Column(name = "Id")
     private Long id;
 
-    @Basic(optional = false)
-    @Column(name = "name")
-    private String name;
-
-    @Basic(optional = false)
-    @Column(name = "code")
-    private int code;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "docid", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Set<Employee> employees;
-
+    public String getName() {
+        return name;
+    }
 
     public Long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
+
     }
 
     public int getCode() {
@@ -52,7 +41,16 @@ public class Docs {
         this.employees = employees;
     }
 
+    @Basic(optional = false)
+    @Column(name = "name")
+    private String name;
 
+    @Basic(optional = false)
+    @Column(name = "code")
+    private int code;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "citizenshipid", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Set<Employee> employees;
 
 
 }

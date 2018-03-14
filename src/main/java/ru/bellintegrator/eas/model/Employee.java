@@ -14,16 +14,19 @@ public class Employee {
     @Column(name = "Id")
     private Long id;
 
+    @Version
+    private Integer version;
+
     @Basic(optional = false)
-    @Column(name = "firstName")
+    @Column(name = "first_name")
     private String firstName;
 
     @Basic(optional = false)
-    @Column(name = "secondName")
+    @Column(name = "second_name")
     private String secondName;
 
     @Basic(optional = false)
-    @Column(name = "middleName")
+    @Column(name = "middle_name")
     private String middleName;
 
     @Basic(optional = false)
@@ -34,29 +37,29 @@ public class Employee {
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "isIdentified")
+    @Column(name = "is_identified")
     private Boolean isIdentified = true;
 
     @Basic(optional = false)
-    @Column(name = "docNumber")
+    @Column(name = "doc_number")
     private String docNumber;
 
     @Basic(optional = false)
-    @Column(name = "docDate")
+    @Column(name = "doc_date")
     @Temporal(TemporalType.DATE)
     private Date docDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "officeid")
+    @JoinColumn(name = "office_id")
     private Office office;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "docid")
-    private Docs docid;
+    @JoinColumn(name = "doc_id")
+    private Doc_type docid;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "citizenshipid")
-    private Countries citizenshipid;
+    @JoinColumn(name = "citizenship_id")
+    private Country citizenshipid;
 
 
     public Long getId() {
@@ -139,17 +142,17 @@ public class Employee {
         this.docNumber = docNumber;
     }
 
-    public Docs getDocid() { return docid; }
+    public Doc_type getDocid() { return docid; }
 
-    public void setDocid(Docs docid) {
+    public void setDocid(Doc_type docid) {
         this.docid = docid;
     }
 
-    public Countries getCitizenshipid() {
+    public Country getCitizenshipid() {
         return citizenshipid;
     }
 
-    public void setCitizenshipid(Countries citizenshipid) {
+    public void setCitizenshipid(Country citizenshipid) {
         this.citizenshipid = citizenshipid;
     }
 
