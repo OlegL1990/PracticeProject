@@ -8,25 +8,18 @@ import java.util.Set;
 @Table(name = "Doc_type")
 public class Doc_type {
     @Id
-    @GeneratedValue
-    @Column(name = "Id")
-    private Long id;
+    @Column(name = "code")
+    private Long code;
 
     @Basic(optional = false)
     @Column(name = "name")
     private String name;
 
-    @Basic(optional = false)
-    @Column(name = "code")
-    private int code;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "docid", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Set<Employee> employees;
+   @OneToMany(fetch = FetchType.LAZY, mappedBy = "docCode", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+   private Set<Employee> employees;
 
 
-    public Long getId() {
-        return id;
-    }
 
     public String getName() {
         return name;
@@ -36,11 +29,11 @@ public class Doc_type {
         this.name = name;
     }
 
-    public int getCode() {
+    public long getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(long code) {
         this.code = code;
     }
 

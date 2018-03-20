@@ -54,12 +54,12 @@ public class Employee {
     private Office office;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "doc_id")
-    private Doc_type docid;
+    @JoinColumn(name = "doc_code")
+    private Doc_type docCode;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "citizenship_id")
-    private Country citizenshipid;
+    @JoinColumn(name = "citizenship_code")
+    private Country citizenshipCode;
 
 
     public Long getId() {
@@ -142,18 +142,17 @@ public class Employee {
         this.docNumber = docNumber;
     }
 
-    public Doc_type getDocid() { return docid; }
+    public Doc_type getDocCode() { return docCode; }
 
-    public void setDocid(Doc_type docid) {
-        this.docid = docid;
+    public void setDocCode(Doc_type docCode) {
+        this.docCode = docCode;
     }
 
-    public Country getCitizenshipid() {
-        return citizenshipid;
+    public Country getCitizenshipiCode(){return citizenshipCode;}
+
+    public void setCitizenshipCode(Country citizenshipCode) {
+        this.citizenshipCode  = citizenshipCode;
     }
 
-    public void setCitizenshipid(Country citizenshipid) {
-        this.citizenshipid = citizenshipid;
-    }
 
 }

@@ -8,16 +8,11 @@ import java.util.Set;
 @Table(name = "Country")
 public class Country {
     @Id
-    @GeneratedValue
-    @Column(name = "Id")
-    private Long id;
+    @Column(name = "code")
+    private Long code;
 
     public String getName() {
         return name;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public void setName(String name) {
@@ -25,11 +20,11 @@ public class Country {
 
     }
 
-    public int getCode() {
+    public long getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(long code) {
         this.code = code;
     }
 
@@ -45,11 +40,8 @@ public class Country {
     @Column(name = "name")
     private String name;
 
-    @Basic(optional = false)
-    @Column(name = "code")
-    private int code;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "citizenshipid", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "citizenshipCode", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Employee> employees;
 
 

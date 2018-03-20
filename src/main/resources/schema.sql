@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Org (
     kpp  VARCHAR(50) NOT NULL,
     address VARCHAR(max) NOT NULL,
     phone  VARCHAR(50) NOT NUll,
-    is_active BOOLEAN DEFAULT TRUE,
+    is_active BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE IF NOT EXISTS Office (
@@ -36,37 +36,38 @@ CREATE TABLE IF NOT EXISTS Employee (
     middle_name VARCHAR(50) NOT NULL,
     position VARCHAR(50) NOT NULL,
     phone  VARCHAR(50) NOT NUll,
-    doc_id INTEGER,
+    doc_code INTEGER,
     doc_number INTEGER NOT NULL,
     doc_date DATE,
-    citizenship_id INTEGER,
+    citizenship_code INTEGER,
     is_identified BOOLEAN DEFAULT TRUE,
-    office_id INTEGER,
+    office_id INTEGER
+
 
 );
 
-CREATE TABLE IF NOT EXISTS Doc_type {
-    id         INTEGER  PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS Doc_type (
     name VARCHAR(50) NOT NULL,
-    code INTEGER NOT NUll
-};
+    code INTEGER PRIMARY KEY
+);
 
-CREATE TABLE IF NOT EXISTS Country {
-    id        INTEGER  PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS Country (
     name VARCHAR(50) NOT NULL,
-    code INTEGER NOT NUll
-};
+    code INTEGER NOT NULL PRIMARY KEY
+);
+
 
 CREATE INDEX office_ix_org_id ON Office (org_id);
 ALTER TABLE Office ADD FOREIGN KEY (org_id) REFERENCES Org(id);
 
-CREATE INDEX employee_ix_office_id ON  Employee (office_id)
+CREATE INDEX employee_ix_office_id ON  Employee (office_id);
 ALTER TABLE Employee ADD FOREIGN KEY (office_id) REFERENCES Office(id);
 
-CREATE INDEX employee_ix_doc_id ON  Employee (doc_id)
-ALTER TABLE Employee ADD FOREIGN KEY (doc_id) REFERENCES Doc_type(id);
+CREATE INDEX employee_ix_doc_id ON  Employee (doc_code);
+ALTER TABLE Employee ADD FOREIGN KEY (doc_code) REFERENCES Doc_type(code);
 
-CREATE INDEX employee_ix_citizenship_id ON  Employee (citizenship_id)
-ALTER TABLE Employee ADD FOREIGN KEY (citizenship_id) REFERENCES Country(id);
+CREATE INDEX employee_ix_citizenship_id ON  Employee (citizenship_code);
+ALTER TABLE Employee ADD FOREIGN KEY (citizenship_code) REFERENCES Country(code);
+
 
 

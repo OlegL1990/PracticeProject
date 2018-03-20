@@ -9,7 +9,6 @@ import ru.bellintegrator.eas.service.EmployeeService;
 import ru.bellintegrator.eas.view.EmployeeView;
 
 @Service
-@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
@@ -24,11 +23,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setSecondName(ev.getSecondName());
         employee.setPhone(ev.getPhone());
         employee.setPosition(ev.getSecondName());
-        employee.setDocid(ev.getDocid());
+        employee.setDocCode(employeeDAO.loadDocByCode(ev.getDocCode()));
         employee.setDocDate(ev.getDocDate());
         employee.setDocNumber(ev.getDocNumber());
-        employee.setCitizenshipid(ev.getCitizenshipid());
+        employee.setCitizenshipCode(employeeDAO.loadCountryByCode(ev.getCitizenshipCode()));
         employee.setIdentified(ev.getIdentified());
+        employee.setOffice(employeeDAO.loadOfficeById(ev.getOffice()));
         employeeDAO.save(employee);
     }
 
@@ -42,10 +42,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setSecondName(ev.getSecondName());
         employee.setPhone(ev.getPhone());
         employee.setPosition(ev.getSecondName());
-        employee.setDocid(ev.getDocid());
+        employee.setDocCode(employeeDAO.loadDocByCode(ev.getDocCode()));
         employee.setDocDate(ev.getDocDate());
         employee.setDocNumber(ev.getDocNumber());
-        employee.setCitizenshipid(ev.getCitizenshipid());
+        employee.setCitizenshipCode(employeeDAO.loadCountryByCode(ev.getCitizenshipCode()));
         employee.setIdentified(ev.getIdentified());
         employeeDAO.update(employee);
 
@@ -62,12 +62,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeView.setSecondName(employee.getSecondName());
         employeeView.setPhone(employee.getPhone());
         employeeView.setPosition(employee.getSecondName());
-        employeeView.setDocid(employee.getDocid());
+        employeeView.setDocCode(employee.getDocCode().getCode());
+        employeeView.setDocName(employee.getDocCode().getName());
         employeeView.setDocDate(employee.getDocDate());
         employeeView.setDocNumber(employee.getDocNumber());
-        employeeView.setCitizenshipid(employee.getCitizenshipid());
+        employeeView.setCitizenshipCode(employee.getCitizenshipiCode().getCode());
+        employeeView.setCitizenshipName(employee.getCitizenshipiCode().getName());
         employeeView.setIdentified(employee.getIdentified());
-
         return employeeView;
     }
 

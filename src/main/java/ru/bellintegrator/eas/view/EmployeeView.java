@@ -26,11 +26,15 @@ public class EmployeeView {
 
     private Date docDate;
 
-    private Office office;
+    private long docCode;
 
-    private Doc_type docid;
+    private long citizenshipCode;
 
-    private Country citizenshipid;
+    private  String docName;
+
+    private  String citizenshipName;
+
+    private  long office;
 
     public Long getId() {
         return id;
@@ -104,27 +108,43 @@ public class EmployeeView {
         this.docDate = docDate;
     }
 
-    public Office getOffice() {
+    public long getOffice() {
         return office;
     }
 
-    public void setOffice(Office office) {
+    public void setOffice(long office) {
         this.office = office;
     }
 
-    public Doc_type getDocid() {
-        return docid;
+    public long getDocCode() {
+        return docCode;
     }
 
-    public void setDocid(Doc_type docid) {
-        this.docid = docid;
+    public void setDocCode(long docCode) {
+        this.docCode = docCode;
     }
 
-    public Country getCitizenshipid() {
-        return citizenshipid;
+    public long getCitizenshipCode() {
+        return citizenshipCode;
     }
 
-    public void setCitizenshipid(Country citizenshipid) {
-        this.citizenshipid = citizenshipid;
+    public void setCitizenshipCode(long citizenshipCode) {
+        this.citizenshipCode = citizenshipCode;
+    }
+
+    public String getDocName() {
+        return docName;
+    }
+
+    public void setDocName(String docName) {
+        this.docName = docName;
+    }
+
+    public String getCitizenshipName() {
+        return citizenshipName;
+    }
+
+    public void setCitizenshipName(String citizenshipName) {
+        this.citizenshipName = citizenshipName;
     }
 }
