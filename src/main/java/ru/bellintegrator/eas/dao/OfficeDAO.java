@@ -1,6 +1,7 @@
 package ru.bellintegrator.eas.dao;
 
 import ru.bellintegrator.eas.model.Office;
+import  ru.bellintegrator.eas.model.Org;
 
 import java.util.List;
 
@@ -35,4 +36,13 @@ public interface OfficeDAO {
      * @param office
      */
     void delete(Office office);
+
+    /**
+     * Получить Org по идентификатору
+     *
+     * @param id
+     * @return Экземпляр Org с заданным id
+     */
+
+    Org loadOrgById(Long id);
 }

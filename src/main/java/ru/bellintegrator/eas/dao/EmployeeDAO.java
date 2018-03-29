@@ -5,8 +5,10 @@ import ru.bellintegrator.eas.model.Doc_type;
 import ru.bellintegrator.eas.model.Employee;
 import ru.bellintegrator.eas.model.Office;
 
+import java.util.List;
+
 public interface EmployeeDAO {
-    //List<Employee> list(long officeid,String firstName,String middleName,String lastName,String position,int docCode,int citizenshipCode);
+    List<Employee> loadByFilter(long office, String firstName);
 
     /**
      * Получить Employee по идентификатору

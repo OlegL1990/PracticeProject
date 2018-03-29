@@ -8,6 +8,8 @@ import ru.bellintegrator.eas.model.Employee;
 import ru.bellintegrator.eas.service.EmployeeService;
 import ru.bellintegrator.eas.view.EmployeeView;
 
+import java.util.List;
+
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -77,5 +79,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void delete(long id) {
         Employee employee = employeeDAO.loadById(id);
         employeeDAO.delete(employee);
+    }
+
+    @Override
+    @Transactional
+    public List<Employee> filter(EmployeeView ev) {
+        List<Employee> employee =employeeDAO.loadByFilter(ev.getOffice(),ev.getFirstName());
+        return employee;
     }
 }

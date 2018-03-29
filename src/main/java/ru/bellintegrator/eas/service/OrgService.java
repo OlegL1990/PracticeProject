@@ -1,6 +1,9 @@
 package ru.bellintegrator.eas.service;
 
+import ru.bellintegrator.eas.model.Org;
 import ru.bellintegrator.eas.view.OrgView;
+
+import java.util.List;
 
 public interface OrgService {
 
@@ -32,4 +35,6 @@ public interface OrgService {
      * @param id
      */
     void delete(long id);
+
+    List<Org> all();
 }

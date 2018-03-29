@@ -14,7 +14,7 @@ public class OfficeView {
 
     private Boolean isActive;
 
-    private Org org;
+    private long org;
 
     public Long getId() {
         return id;
@@ -56,11 +56,11 @@ public class OfficeView {
         isActive = active;
     }
 
-    public Org getOrg() {
+    public long getOrg() {
         return org;
     }
 
-    public void setOrg(Org org) {
+    public void setOrg(long org) {
         this.org = org;
     }
 

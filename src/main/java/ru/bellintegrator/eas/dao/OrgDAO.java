@@ -35,4 +35,6 @@ public interface OrgDAO {
      * @param org
      */
     void delete(Org org);
+
+    List<Org> all();
 }

@@ -9,6 +9,11 @@ import ru.bellintegrator.eas.model.Employee;
 import ru.bellintegrator.eas.model.Office;
 
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.util.List;
 
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
@@ -52,6 +57,27 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public Office loadOfficeById(long id) {
         return em.find(Office.class, id);
+    }
+    @Override
+    public List<Employee> loadByFilter(long office,String firstName){
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery cq = cb.createQuery(Employee.class);
+        Root<Employee> employeeRoot = cq.from(Employee.class);
+
+        Predicate predicate = cb.conjunction();
+        //office
+
+            Predicate pa = cb.equal(employeeRoot.join("office").get("id"), office);
+            predicate = cb.and(predicate, pa);
+
+        //lastName
+        if (firstName != null) {
+            Predicate p = cb.equal(employeeRoot.get("firstName"), firstName);
+            predicate = cb.and(predicate, p);
+        }
+        cq.where(predicate);
+        List<Employee> result = em.createQuery(cq).getResultList();
+        return result;
     }
     //@Override
     //List<Employee> list(long officeid,String firstName,String middleName,String lastName,String position,int docCode,int citizenshipCode);

@@ -6,6 +6,7 @@ import ru.bellintegrator.eas.dao.OrgDAO;
 import ru.bellintegrator.eas.model.Org;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
@@ -37,7 +38,11 @@ public class OrgDAOImpl implements OrgDAO {
         em.remove(org);
     }
 
-
+    @Override
+    public List<Org> all() {
+        TypedQuery<Org> query = em.createQuery("SELECT h FROM Org h", Org.class);
+        return query.getResultList();
+    }
 
     //@Override
     //List<Org> list(String name,String inn,boolean isActive) {

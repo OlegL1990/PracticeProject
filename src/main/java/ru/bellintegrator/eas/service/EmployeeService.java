@@ -1,6 +1,9 @@
 package ru.bellintegrator.eas.service;
 
+import ru.bellintegrator.eas.model.Employee;
 import ru.bellintegrator.eas.view.EmployeeView;
+
+import java.util.List;
 
 public interface EmployeeService {
 
@@ -32,4 +35,6 @@ public interface EmployeeService {
      * @param id
      */
     void delete(long id);
+
+    List<Employee> filter(EmployeeView ev);
 }

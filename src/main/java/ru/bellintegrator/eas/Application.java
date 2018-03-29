@@ -10,16 +10,20 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import ru.bellintegrator.eas.controller.EmployeeController;
+import ru.bellintegrator.eas.controller.OfficeController;
+import ru.bellintegrator.eas.controller.OrgController;
 import ru.bellintegrator.eas.dao.impl.OfficeDAOImpl;
 import ru.bellintegrator.eas.dao.impl.OrgDAOImpl;
 import ru.bellintegrator.eas.dao.impl.EmployeeDAOImpl;
 import ru.bellintegrator.eas.service.impl.EmployeeServiceImpl;
+import ru.bellintegrator.eas.service.impl.OfficeServiceImpl;
+import ru.bellintegrator.eas.service.impl.OrgServiceImpl;
 
 import java.util.Locale;
 
 @ImportResource("spring_mvc_config.xml")
 @SpringBootApplication
-@ComponentScan(basePackageClasses = {OfficeDAOImpl.class, OrgDAOImpl.class, EmployeeDAOImpl.class, EmployeeServiceImpl.class, EmployeeController.class})
+@ComponentScan(basePackageClasses = {OfficeDAOImpl.class, OrgDAOImpl.class, EmployeeDAOImpl.class, EmployeeServiceImpl.class, EmployeeController.class, OfficeServiceImpl.class, OfficeController.class, OrgController.class, OrgServiceImpl.class})
 public class Application {
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(Application.class);

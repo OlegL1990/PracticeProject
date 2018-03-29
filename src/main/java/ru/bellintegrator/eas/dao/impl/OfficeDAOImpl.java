@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.bellintegrator.eas.dao.OfficeDAO;
 import ru.bellintegrator.eas.model.Office;
+import ru.bellintegrator.eas.model.Org;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -36,7 +37,10 @@ public class OfficeDAOImpl implements OfficeDAO {
         em.remove(office);
     }
 
-
+    @Override
+    public Org loadOrgById(Long id) {
+        return em.find(Org.class, id);
+    }
 
     //@Override
     //public List<Office> list(Long orgid, String name, String phone, boolean isActive) {
