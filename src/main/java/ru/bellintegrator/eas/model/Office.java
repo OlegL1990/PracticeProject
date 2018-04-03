@@ -30,12 +30,12 @@ public class Office {
     @Column(name = "is_active")
     private Boolean isActive = true;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "org_id")
     private Org org;
 
-   // @OneToMany(fetch = FetchType.LAZY, mappedBy = "office", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-   // private Set<Employee> employees;
+   @OneToMany(fetch = FetchType.LAZY, mappedBy = "office", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+   private Set<Employee> employees;
 
     public Long getId() {
         return id;
@@ -77,14 +77,14 @@ public class Office {
         isActive = active;
     }
 
- /*   public Set<Employee> getEmployees() {
+    public Set<Employee> getEmployees() {
         return employees;
     }
 
     public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
     }
-*/
+
     public Org getOrg() {
         return org;
     }

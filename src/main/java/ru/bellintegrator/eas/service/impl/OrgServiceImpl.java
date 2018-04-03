@@ -69,9 +69,5 @@ public class OrgServiceImpl implements OrgService {
 
     }
 
-    @Override
-    @Transactional
-    public List<Org> all(){
-        return orgDAO.all();
-    }
+
 }

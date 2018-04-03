@@ -36,5 +36,5 @@ public interface OrgService {
      */
     void delete(long id);
 
-    List<Org> all();
+
 }

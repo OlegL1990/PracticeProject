@@ -8,6 +8,8 @@ import ru.bellintegrator.eas.model.Office;
 import ru.bellintegrator.eas.service.OfficeService;
 import ru.bellintegrator.eas.view.OfficeView;
 
+import java.util.List;
+
 @Service
 public class OfficeServiceImpl implements OfficeService {
 
@@ -24,6 +26,7 @@ public class OfficeServiceImpl implements OfficeService {
         ov.setAddress(office.getAddress());
         ov.setPhone(office.getPhone());
         ov.setActive(office.getActive());
+        ov.setOrg(office.getOrg().getId());
         return ov;
     }
 
@@ -58,5 +61,12 @@ public class OfficeServiceImpl implements OfficeService {
         Office office = officeDAO.loadById(id);
         officeDAO.delete(office);
 
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Office> filter(OfficeView ov) {
+        List<Office> office = officeDAO.loadByFilter(ov.getOrg(),ov.getName(),ov.getPhone(),ov.getActive());
+        return office;
     }
 }

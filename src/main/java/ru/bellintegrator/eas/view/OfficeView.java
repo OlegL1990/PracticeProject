@@ -1,7 +1,5 @@
 package ru.bellintegrator.eas.view;
 
-import ru.bellintegrator.eas.model.Org;
-
 public class OfficeView {
 
     private Long id;

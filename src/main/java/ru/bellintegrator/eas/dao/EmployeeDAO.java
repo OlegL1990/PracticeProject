@@ -8,7 +8,7 @@ import ru.bellintegrator.eas.model.Office;
 import java.util.List;
 
 public interface EmployeeDAO {
-    List<Employee> loadByFilter(long office, String firstName);
+    List<Employee> loadByFilter(long office,String firstName,String middleName,String lastName,String position,Long docCode,Long citizenshipCode);
 
     /**
      * Получить Employee по идентификатору

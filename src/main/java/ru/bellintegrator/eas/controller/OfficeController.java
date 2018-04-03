@@ -3,8 +3,12 @@ package ru.bellintegrator.eas.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import ru.bellintegrator.eas.model.Office;
+import ru.bellintegrator.eas.model.Org;
 import ru.bellintegrator.eas.service.OfficeService;
 import ru.bellintegrator.eas.view.OfficeView;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/office")
@@ -30,5 +34,10 @@ public class OfficeController {
     @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
     public void updateOffice(@RequestBody OfficeView ev) {
         officeService.update(ev);
+    }
+
+    @RequestMapping(value="/filter",method= RequestMethod.POST,produces={MediaType.APPLICATION_JSON_VALUE},consumes={MediaType.APPLICATION_JSON_VALUE})
+    public List<Office> filterEmployee(@RequestBody OfficeView ov){
+        return officeService.filter(ov);
     }
 }

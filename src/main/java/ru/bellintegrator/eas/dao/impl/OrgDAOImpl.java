@@ -38,11 +38,7 @@ public class OrgDAOImpl implements OrgDAO {
         em.remove(org);
     }
 
-    @Override
-    public List<Org> all() {
-        TypedQuery<Org> query = em.createQuery("SELECT h FROM Org h", Org.class);
-        return query.getResultList();
-    }
+
 
     //@Override
     //List<Org> list(String name,String inn,boolean isActive) {

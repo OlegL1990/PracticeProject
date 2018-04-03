@@ -71,6 +71,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeView.setCitizenshipCode(employee.getCitizenshipiCode().getCode());
         employeeView.setCitizenshipName(employee.getCitizenshipiCode().getName());
         employeeView.setIdentified(employee.getIdentified());
+        employeeView.setOffice(employee.getOffice().getId());
         return employeeView;
     }
 
@@ -82,9 +83,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<Employee> filter(EmployeeView ev) {
-        List<Employee> employee =employeeDAO.loadByFilter(ev.getOffice(),ev.getFirstName());
+        List<Employee> employee =employeeDAO.loadByFilter(ev.getOffice(),ev.getFirstName(),ev.getMiddleName(),ev.getSecondName(),ev.getPosition(),ev.getDocCode(),ev.getCitizenshipCode());
         return employee;
     }
 }

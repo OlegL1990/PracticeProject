@@ -6,7 +6,7 @@ import  ru.bellintegrator.eas.model.Org;
 import java.util.List;
 
 public interface OfficeDAO {
-   // List<Office> list(Long orgid,String name,String phone, boolean isActive);
+    List<Office> loadByFilter(Long org,String name,String phone, Boolean isActive);
 
     /**
      * Получить Office по идентификатору
@@ -45,4 +45,6 @@ public interface OfficeDAO {
      */
 
     Org loadOrgById(Long id);
+
+
 }

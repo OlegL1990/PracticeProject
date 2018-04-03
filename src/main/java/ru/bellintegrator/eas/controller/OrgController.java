@@ -36,8 +36,5 @@ public class OrgController {
         orgService.update(orv);
     }
 
-    @GetMapping(value = "/all", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public List<Org> all() {
-        return orgService.all();
-    }
+
 }

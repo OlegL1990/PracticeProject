@@ -1,6 +1,9 @@
 package ru.bellintegrator.eas.service;
 
 import ru.bellintegrator.eas.view.OfficeView;
+import ru.bellintegrator.eas.model.Office;
+
+import java.util.List;
 
 public interface OfficeService {
 
@@ -32,4 +35,6 @@ public interface OfficeService {
      * @param id
      */
     void delete(long id);
+
+    List<Office> filter(OfficeView ov);
 }

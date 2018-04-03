@@ -49,15 +49,15 @@ public class Employee {
     @Temporal(TemporalType.DATE)
     private Date docDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "office_id")
     private Office office;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "doc_code")
     private Doc_type docCode;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "citizenship_code")
     private Country citizenshipCode;
 

@@ -36,5 +36,4 @@ public interface OrgDAO {
      */
     void delete(Org org);
 
-    List<Org> all();
 }
