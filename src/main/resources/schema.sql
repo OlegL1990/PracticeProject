@@ -38,7 +38,6 @@ CREATE TABLE IF NOT EXISTS Employee (
     phone  VARCHAR(50) NOT NUll,
     doc_code INTEGER,
     doc_number INTEGER NOT NULL,
-    doc_date DATE,
     citizenship_code INTEGER,
     is_identified BOOLEAN DEFAULT TRUE,
     office_id INTEGER

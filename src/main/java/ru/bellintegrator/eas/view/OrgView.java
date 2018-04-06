@@ -1,7 +1,7 @@
 package ru.bellintegrator.eas.view;
 
 public class OrgView {
-    private Long id;
+    private long id;
 
     private String name;
 
@@ -17,11 +17,11 @@ public class OrgView {
 
     private Boolean isActive;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

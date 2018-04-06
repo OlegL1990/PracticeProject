@@ -36,8 +36,8 @@ public class OfficeController {
         officeService.update(ev);
     }
 
-    @RequestMapping(value="/filter",method= RequestMethod.POST,produces={MediaType.APPLICATION_JSON_VALUE},consumes={MediaType.APPLICATION_JSON_VALUE})
-    public List<Office> filterEmployee(@RequestBody OfficeView ov){
+    @RequestMapping(value="/list",method= RequestMethod.POST,produces={MediaType.APPLICATION_JSON_VALUE},consumes={MediaType.APPLICATION_JSON_VALUE})
+    public List<Office> filterOffice(@RequestBody OfficeView ov){
         return officeService.filter(ov);
     }
 }

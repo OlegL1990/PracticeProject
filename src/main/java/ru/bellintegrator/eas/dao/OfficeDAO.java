@@ -6,6 +6,13 @@ import  ru.bellintegrator.eas.model.Org;
 import java.util.List;
 
 public interface OfficeDAO {
+
+    /**
+     * Получить List<Office> по фильтрку(Org_id,name,phone,active)
+     *
+     * @param org,name,phone,isActive
+     * @return Список List<Office>
+     */
     List<Office> loadByFilter(Long org,String name,String phone, Boolean isActive);
 
     /**

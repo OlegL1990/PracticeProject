@@ -36,5 +36,11 @@ public interface OfficeService {
      */
     void delete(long id);
 
+    /**
+     * Получить List<Office> по фильтру из ov
+     *
+     * @param ov
+     * @return Список List<Office>
+     */
     List<Office> filter(OfficeView ov);
 }

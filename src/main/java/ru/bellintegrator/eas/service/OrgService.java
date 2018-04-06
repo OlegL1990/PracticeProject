@@ -36,5 +36,11 @@ public interface OrgService {
      */
     void delete(long id);
 
-
+    /**
+     * Получить List<Org> по фильтру из orv
+     *
+     * @param orv
+     * @return Список List<Org>
+     */
+    List<Org> filter(OrgView orv);
 }

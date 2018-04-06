@@ -36,5 +36,11 @@ public interface EmployeeService {
      */
     void delete(long id);
 
+    /**
+     * Получить List<Employee> по фильтру из ev
+     *
+     * @param ev
+     * @return Список List<Employee>
+     */
     List<Employee> filter(EmployeeView ev);
 }

@@ -44,11 +44,6 @@ public class Employee {
     @Column(name = "doc_number")
     private String docNumber;
 
-    @Basic(optional = false)
-    @Column(name = "doc_date")
-    @Temporal(TemporalType.DATE)
-    private Date docDate;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "office_id")
     private Office office;
@@ -116,14 +111,6 @@ public class Employee {
 
     public void setIdentified(Boolean identified) {
         isIdentified = identified;
-    }
-
-    public Date getDocDate() {
-        return docDate;
-    }
-
-    public void setDocDate(Date docDate) {
-        this.docDate = docDate;
     }
 
     public Office getOffice() {

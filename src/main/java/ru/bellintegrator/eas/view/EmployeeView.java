@@ -22,8 +22,6 @@ public class EmployeeView {
 
     private String docNumber;
 
-    private Date docDate;
-
     private long docCode;
 
     private long citizenshipCode;
@@ -96,14 +94,6 @@ public class EmployeeView {
 
     public void setDocNumber(String docNumber) {
         this.docNumber = docNumber;
-    }
-
-    public Date getDocDate() {
-        return docDate;
-    }
-
-    public void setDocDate(Date docDate) {
-        this.docDate = docDate;
     }
 
     public long getOffice() {

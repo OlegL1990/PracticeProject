@@ -69,5 +69,12 @@ public class OrgServiceImpl implements OrgService {
 
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<Org> filter(OrgView orv) {
+        List<Org> org = orgDAO.loadByFilter(orv.getName(),orv.getInn(),orv.getActive());
+        return org;
+    }
+
 
 }

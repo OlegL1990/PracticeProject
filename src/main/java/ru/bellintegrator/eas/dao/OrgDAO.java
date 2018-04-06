@@ -5,7 +5,14 @@ import ru.bellintegrator.eas.model.Org;
 import java.util.List;
 
 public interface OrgDAO {
-   // List<Org> list(String name,String inn,boolean isActive);
+
+    /**
+     * Получить List<Org> по фильтрку(name,inn,active)
+     *
+     * @param name,inn,isActive
+     * @return Список List<Org>
+     */
+    List<Org> loadByFilter(String name,String inn,Boolean isActive);
 
     /**
      * Получить Org по идентификатору

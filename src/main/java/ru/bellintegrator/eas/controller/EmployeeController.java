@@ -35,7 +35,7 @@ public class EmployeeController {
         employeeService.update(ev);
     }
 
-    @RequestMapping(value="/filter",method= RequestMethod.POST,produces={MediaType.APPLICATION_JSON_VALUE},consumes={MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(value="/list",method= RequestMethod.POST,produces={MediaType.APPLICATION_JSON_VALUE},consumes={MediaType.APPLICATION_JSON_VALUE})
     public List<Employee> filterEmployee(@RequestBody EmployeeView ev){
         return employeeService.filter(ev);
     }

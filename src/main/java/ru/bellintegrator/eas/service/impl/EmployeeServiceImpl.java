@@ -26,7 +26,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setPhone(ev.getPhone());
         employee.setPosition(ev.getSecondName());
         employee.setDocCode(employeeDAO.loadDocByCode(ev.getDocCode()));
-        employee.setDocDate(ev.getDocDate());
         employee.setDocNumber(ev.getDocNumber());
         employee.setCitizenshipCode(employeeDAO.loadCountryByCode(ev.getCitizenshipCode()));
         employee.setIdentified(ev.getIdentified());
@@ -45,7 +44,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setPhone(ev.getPhone());
         employee.setPosition(ev.getSecondName());
         employee.setDocCode(employeeDAO.loadDocByCode(ev.getDocCode()));
-        employee.setDocDate(ev.getDocDate());
         employee.setDocNumber(ev.getDocNumber());
         employee.setCitizenshipCode(employeeDAO.loadCountryByCode(ev.getCitizenshipCode()));
         employee.setIdentified(ev.getIdentified());
@@ -66,7 +64,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeView.setPosition(employee.getSecondName());
         employeeView.setDocCode(employee.getDocCode().getCode());
         employeeView.setDocName(employee.getDocCode().getName());
-        employeeView.setDocDate(employee.getDocDate());
         employeeView.setDocNumber(employee.getDocNumber());
         employeeView.setCitizenshipCode(employee.getCitizenshipiCode().getCode());
         employeeView.setCitizenshipName(employee.getCitizenshipiCode().getName());

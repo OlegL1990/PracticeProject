@@ -7,6 +7,10 @@ import ru.bellintegrator.eas.model.Org;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Repository
@@ -30,7 +34,15 @@ public class OrgDAOImpl implements OrgDAO {
 
     @Override
     public void update(Org org) {
-        em.merge(org);
+        Org orgtemp = em.find(Org.class, org.getId());
+        orgtemp.setName(org.getName());
+        orgtemp.setFullName(org.getFullName());
+        orgtemp.setInn(org.getInn());
+        orgtemp.setKpp(org.getKpp());
+        orgtemp.setAddress(org.getAddress());
+        orgtemp.setPhone(org.getPhone());
+        orgtemp.setActive(org.getActive());
+        em.merge(orgtemp);
     }
 
     @Override
@@ -38,10 +50,33 @@ public class OrgDAOImpl implements OrgDAO {
         em.remove(org);
     }
 
+    @Override
+    public List<Org> loadByFilter(String name, String inn, Boolean isActive) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery cq = cb.createQuery(Org.class);
+        Root<Org> orgRoot = cq.from(Org.class);
 
+        Predicate predicate = cb.conjunction();
 
-    //@Override
-    //List<Org> list(String name,String inn,boolean isActive) {
-    //сделать с помощью Criteria API
-    //}
+        //name
+        Predicate pa = cb.equal(orgRoot.get("name"), name);
+        predicate = cb.and(predicate, pa);
+
+        //inn
+        if (inn != null) {
+            Predicate p = cb.equal(orgRoot.get("inn"), inn);
+            predicate = cb.and(predicate, p);
+        }
+        //active
+        if (isActive != null) {
+            Predicate p = cb.equal(orgRoot.get("isActive"), isActive);
+            predicate = cb.and(predicate, p);
+        }
+
+        cq.where(predicate);
+        TypedQuery<Org> query = em.createQuery(cq);
+        List<Org> result = query.getResultList();
+        return result;
+
+    }
 }
