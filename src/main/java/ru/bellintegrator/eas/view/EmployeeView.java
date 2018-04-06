@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class EmployeeView {
 
-    private Long id;
+    private long id;
 
     private String firstName;
 
@@ -32,11 +32,11 @@ public class EmployeeView {
 
     private  long office;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

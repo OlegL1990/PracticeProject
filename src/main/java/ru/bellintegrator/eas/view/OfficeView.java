@@ -2,7 +2,7 @@ package ru.bellintegrator.eas.view;
 
 public class OfficeView {
 
-    private Long id;
+    private long id;
 
     private String name;
 
@@ -14,11 +14,11 @@ public class OfficeView {
 
     private long org;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

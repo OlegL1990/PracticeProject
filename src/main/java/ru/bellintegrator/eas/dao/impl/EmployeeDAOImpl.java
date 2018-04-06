@@ -9,6 +9,7 @@ import ru.bellintegrator.eas.model.Employee;
 import ru.bellintegrator.eas.model.Office;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -36,7 +37,17 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public void update(Employee employee) {
-        em.merge(employee);
+        Employee empTemp = em.find(Employee.class,employee.getId());
+        empTemp.setFirstName(employee.getFirstName());
+        empTemp.setSecondName(employee.getSecondName());
+        empTemp.setMiddleName(employee.getMiddleName());
+        empTemp.setPosition(employee.getPosition());
+        empTemp.setPhone(employee.getPhone());
+        empTemp.setIdentified(employee.getIdentified());
+        empTemp.setDocNumber(employee.getDocNumber());
+        empTemp.setDocCode(employee.getDocCode());
+        empTemp.setCitizenshipCode(employee.getCitizenshipiCode());
+        em.merge(empTemp);
     }
 
     @Override
@@ -102,7 +113,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             predicate = cb.and(predicate, p);
         }
         cq.where(predicate);
-        List<Employee> result = em.createQuery(cq).getResultList();
+        TypedQuery<Employee> query = em.createQuery(cq);
+        List<Employee> result = query.getResultList();
         return result;
     }
 }

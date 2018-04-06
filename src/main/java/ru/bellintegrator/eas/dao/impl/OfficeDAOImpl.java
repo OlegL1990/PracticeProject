@@ -35,7 +35,12 @@ public class OfficeDAOImpl implements OfficeDAO {
 
     @Override
     public void update(Office office) {
-        em.merge(office);
+        Office officeTemp = em.find(Office.class,office.getId());
+        officeTemp.setName(office.getName());
+        officeTemp.setAddress(office.getAddress());
+        officeTemp.setPhone(office.getPhone());
+        officeTemp.setActive(office.getActive());
+        em.merge(officeTemp);
     }
 
     public void delete(Office office) {
@@ -77,7 +82,8 @@ public class OfficeDAOImpl implements OfficeDAO {
         }
 
         cq.where(predicate);
-        List<Office> result = em.createQuery(cq).getResultList();
+        TypedQuery<Office> query = em.createQuery(cq);
+        List<Office> result = query.getResultList();
         return result;
 
     }

@@ -1,7 +1,9 @@
 package ru.bellintegrator.eas.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.bellintegrator.eas.model.Employee;
 import ru.bellintegrator.eas.service.EmployeeService;
@@ -16,28 +18,31 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @RequestMapping(value="/save",method= RequestMethod.POST,consumes={MediaType.APPLICATION_JSON_VALUE})
-    public void saveEmployee(@RequestBody EmployeeView ev){
+    public ResponseEntity<Void> saveEmployee(@RequestBody EmployeeView ev){
         employeeService.save(ev);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}",produces={MediaType.APPLICATION_JSON_VALUE})
-    public EmployeeView getEmployee(@PathVariable("id") long id){
-        return employeeService.loadById(id);
+    public ResponseEntity<EmployeeView> getEmployee(@PathVariable("id") long id){
+        return new ResponseEntity<EmployeeView>(employeeService.loadById(id),HttpStatus.OK);
     }
 
     @RequestMapping(value="/delete",method = RequestMethod.POST,consumes={MediaType.APPLICATION_JSON_VALUE})
-    public void deleteEmployee(@RequestBody long id){
+    public ResponseEntity<Void> deleteEmployee(@RequestBody long id){
         employeeService.delete(id);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @RequestMapping(value="/update",method= RequestMethod.POST,consumes={MediaType.APPLICATION_JSON_VALUE})
-    public void updateEmployee(@RequestBody EmployeeView ev){
+    public ResponseEntity<Void> updateEmployee(@RequestBody EmployeeView ev){
         employeeService.update(ev);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     @RequestMapping(value="/list",method= RequestMethod.POST,produces={MediaType.APPLICATION_JSON_VALUE},consumes={MediaType.APPLICATION_JSON_VALUE})
-    public List<Employee> filterEmployee(@RequestBody EmployeeView ev){
-        return employeeService.filter(ev);
+    public ResponseEntity<List<Employee>> filterEmployee(@RequestBody EmployeeView ev){
+        return new ResponseEntity<List<Employee>>(employeeService.filter(ev),HttpStatus.OK);
     }
 
 }

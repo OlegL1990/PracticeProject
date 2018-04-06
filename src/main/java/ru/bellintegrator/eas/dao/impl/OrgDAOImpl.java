@@ -34,15 +34,15 @@ public class OrgDAOImpl implements OrgDAO {
 
     @Override
     public void update(Org org) {
-        Org orgtemp = em.find(Org.class, org.getId());
-        orgtemp.setName(org.getName());
-        orgtemp.setFullName(org.getFullName());
-        orgtemp.setInn(org.getInn());
-        orgtemp.setKpp(org.getKpp());
-        orgtemp.setAddress(org.getAddress());
-        orgtemp.setPhone(org.getPhone());
-        orgtemp.setActive(org.getActive());
-        em.merge(orgtemp);
+        Org orgTemp = em.find(Org.class, org.getId());
+        orgTemp.setName(org.getName());
+        orgTemp.setFullName(org.getFullName());
+        orgTemp.setInn(org.getInn());
+        orgTemp.setKpp(org.getKpp());
+        orgTemp.setAddress(org.getAddress());
+        orgTemp.setPhone(org.getPhone());
+        orgTemp.setActive(org.getActive());
+        em.merge(orgTemp);
     }
 
     @Override
